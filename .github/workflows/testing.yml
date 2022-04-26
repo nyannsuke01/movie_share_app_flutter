@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: testing
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.pull_request.title, '[Skip CI]') }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        cache: 'gradle'
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        cache: true
+    - run: flutter pub get
+    - name: Copy cognito secrets
+      run: echo -n ${{ secrets.COGNITO_SECRETS }} | base64 -d > lib/common/cognito_secret.dart
+    - run: flutter test
+
