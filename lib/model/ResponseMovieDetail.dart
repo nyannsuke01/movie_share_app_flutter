@@ -220,5 +220,6 @@ class SpokenLanguages {
     data['iso_639_1'] = iso6391;
     data['name'] = name;
     return data;
+
   }
 }
