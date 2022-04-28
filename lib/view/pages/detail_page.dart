@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Const/const.dart';
-import 'model/ResponseMovieDetail.dart';
-import 'model/apiHandler.dart';
+import '../../Const/const.dart';
+import '../../model/ResponseMovieDetail.dart';
+import '../../model/apiHandler.dart';
+import '../widget/detail_item.dart';
 
 class MovieDetail extends StatelessWidget {
   final int id;
@@ -60,19 +61,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             child: detailItem(_movieDetail)
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-  Widget? detailItem(ResponseMovieDetail? detail) {
-    if (detail == null) return null;
-    final posterPath = detail.posterPath;
-    return Card(
-      child: ListTile(
-        title: Text(detail.title ?? ""),
-        leading: Image.network(posterPath != null ? imagePath + posterPath : "",
-            errorBuilder: (context, error, stackTrace) {
-              return const Text("画像\nなし");
-            }),
-      ),
     );
   }
 }

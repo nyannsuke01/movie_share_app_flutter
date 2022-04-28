@@ -1,10 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Const/const.dart';
-import 'detail.dart';
-import 'model/ResponseMovieSearch.dart';
-import 'model/apiHandler.dart';
 import 'navigation.dart';
 
 //Future <void>
@@ -30,7 +26,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Navigation(),
-
       ),
     );
   }

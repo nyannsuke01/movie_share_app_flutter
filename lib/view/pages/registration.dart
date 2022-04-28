@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_academy_graduation/view/pages/welcome.dart';
-import 'authentication_error.dart';
+import '../../util/authentication_error.dart';
 
 // アカウント登録ページ
 class Registration extends StatefulWidget {

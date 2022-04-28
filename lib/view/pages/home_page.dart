@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../detail.dart';
+import '../widget/list_item.dart';
+import 'detail_page.dart';
 import '../../main.dart';
 import '../../model/ResponseMovieSearch.dart';
 import '../../model/apiHandler.dart';
@@ -52,27 +53,6 @@ class _HomePageState extends State<HomePage> {
               },
             )),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-  Widget listItem(BuildContext context, Results result) {
-    final posterPath = result.posterPath;
-    return Card(
-      child: ListTile(
-        title: Text(result.title ?? ""),
-        leading: Image.network(posterPath != null ? mainImagePath + posterPath : "",
-            errorBuilder: (context, error, stackTrace) {
-              return const Text("画像\nなし");
-            }),
-        onTap: () {
-          final id = result.id;
-          if (id != null) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MovieDetail(id)));
-          }
-        },
-      ),
     );
   }
 }
