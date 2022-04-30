@@ -18,6 +18,13 @@ dependencies:
   firebase_auth: ^3.3.11
   http: 
   test: ^1.5.1
+  convex_bottom_bar:
+  dynamic_theme:
+  provider:
+  share_plus:
+  screenshot:
+  path_provider:
+
 
   cupertino_icons: ^1.0.2
 
