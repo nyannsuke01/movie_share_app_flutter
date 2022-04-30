@@ -12,7 +12,7 @@ Widget listItem(BuildContext context, Results result) {
       title: Text(result.title ?? ""),
       leading: Image.network(posterPath != null ? mainImagePath + posterPath : "",
           errorBuilder: (context, error, stackTrace) {
-            return const Text("画像\nなし");
+            return const Text("No\nImage");
           }),
       onTap: () {
         final id = result.id;

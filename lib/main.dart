@@ -1,20 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_academy_graduation/util/app_theme.dart';
+import 'package:provider/provider.dart';
 import 'navigation.dart';
 
-//Future <void>
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppTheme(),
+      child: const MyApp(),
+    ),
+  );
 }
 Future<void> getASync() async {
-  var result = await FirebaseFirestore.instance.collection('memo').get();
+  var result = await FirebaseFirestore.instance.collection('movie_users').get();
   result.docs.forEach((doc) {
     print("***debug--");
-    print(doc.id);
-    print(doc['title']);
+    print("***user_id, ${doc.id}");
+    print(doc['name']);
+    print(doc['videoId']);
   });
 }
 
@@ -24,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: Provider.of<AppTheme>(context).buildTheme(),
       home: Scaffold(
         body: Navigation(),
       ),

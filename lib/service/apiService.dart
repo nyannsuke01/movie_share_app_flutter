@@ -1,8 +1,8 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'ResponseMovieDetail.dart';
-import 'ResponseMovieSearch.dart';
+import '../model/ResponseMovieDetail.dart';
+import '../model/ResponseMovieSearch.dart';
 import '../Const/api_const.dart';
 import '../Const/const.dart';
 
