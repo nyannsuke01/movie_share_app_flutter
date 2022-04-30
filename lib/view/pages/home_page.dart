@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../util/app_theme.dart';
 import '../widget/list_item.dart';
 import 'detail_page.dart';
 import '../../main.dart';
 import '../../model/ResponseMovieSearch.dart';
-import '../../model/apiHandler.dart';
+import '../../service/apiService.dart';
 import '../../Const/const.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +26,7 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           _movieList = result;
           getASync();
+          print("getASync();");
         });
       }
     });
@@ -37,10 +40,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    final theme = Provider.of<AppTheme>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         title: Text(widget.title),
+        leading: Switch.adaptive(
+          inactiveTrackColor: Colors.deepPurple,
+          activeColor: Colors.yellowAccent,
+          value: theme.isDark,
+          onChanged: (_) {
+            theme.changeMode();
+          },
+        ),
+        actions: [IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+            },
+        ),],
+
       ),
       body: Center(
         child: Container(
@@ -49,7 +67,8 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               itemCount: _movieList.length,
               itemBuilder: (listContext, idx) {
-                return listItem(context, _movieList[idx]);
+                final _movie = _movieList[idx];
+                return listItem(context, _movie);
               },
             )),
       ), // This trailing comma makes auto-formatting nicer for build methods.
