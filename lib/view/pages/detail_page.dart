@@ -34,6 +34,7 @@ class MovieDetailPage extends StatefulWidget {
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
+  final _screenShotController = ScreenshotController();
   _MovieDetailPageState(this.id);
   ResponseMovieDetail? _movieDetail = null;
   final int id;
@@ -52,56 +53,58 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
   final myController = TextEditingController();
   final myFocusNode = FocusNode();
-  final _screenShotController = ScreenshotController();
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_movieDetail?.title ?? ""),
-        backgroundColor: Colors.redAccent,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-            children: <Widget>[
-              Container(
-                  height: 480,
-                  width: 500,
-                  child: detailItem(_movieDetail)
-              ),
-              // TODO: Star 追加
-
-              TextField(
-                controller: myController,
-                decoration: InputDecoration(
-                  hintText: 'コメントを入れてシェアしよう！',
-                ),
-                onTap: () {
-                  // TODO: ここにフォーカスするためのコードを書く
-                  myFocusNode.requestFocus();
-                },
-              ),
-              ElevatedButton(
-                child: const Text('Share'),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.redAccent,
-                  onPrimary: Colors.black,
-                  shape: const StadiumBorder(),
-                ),
-                onPressed: () {
-                  _share();
-                },
-              ),
-            ]
+    return Screenshot(
+      controller: _screenShotController,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(_movieDetail?.title ?? ""),
+          backgroundColor: Colors.redAccent,
         ),
+        body: SingleChildScrollView(
+          child: Column(
+              children: <Widget>[
+                Container(
+                    height: 480,
+                    width: 500,
+                    child: detailItem(_movieDetail)
+                ),
+                // TODO: Star 追加
+
+                TextField(
+                  controller: myController,
+                  decoration: InputDecoration(
+                    hintText: 'コメントを入れてシェアしよう！',
+                  ),
+                  onTap: () {
+                    // TODO: ここにフォーカスするためのコードを書く
+                    myFocusNode.requestFocus();
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text('Share'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.redAccent,
+                    onPrimary: Colors.black,
+                    shape: const StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    _share();
+                  },
+                ),
+              ]
+          ),
+        ),
+        // This trailing comma makes auto-formatting nicer for build methods.
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
   void _share() async {
     print("Share Button Tapped");
-    const _shareText = 'シェアするテキスト';
+    var _shareText = _movieDetail!.title as String;
     final _screenshot = await _screenShotController.capture(
         delay: const Duration(milliseconds: 10));
 
