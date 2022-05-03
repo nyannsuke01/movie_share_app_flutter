@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
@@ -14,9 +16,9 @@ Widget? detailItem(ResponseMovieDetail? detail) {
               padding: EdgeInsets.symmetric(
                 horizontal: 50.0,
               ),
-              child: Image.network(
-                posterPath != null ? imagePath + posterPath : "",
-                errorBuilder: (context, error, stackTrace) {
+              child: CachedNetworkImage(
+                imageUrl: posterPath != null ? imagePath + posterPath : "",
+                errorWidget: (context, error, stackTrace) {
                   return const Text("NoImage");
                 },
                 height: 300.0,
@@ -32,13 +34,6 @@ Widget? detailItem(ResponseMovieDetail? detail) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () => print('Navigate to profile'),
-                child: CircleAvatar(
-                  // foregroundImage: NetworkImage(video.author.profileImageUrl),
-                ),
-              ),
-              const SizedBox(width: 8.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,6 +56,14 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                   ],
                 ),
               ),
+              GestureDetector(
+                onTap: () => print('Navigate to profile'),
+
+                child: CircleAvatar(
+                  // foregroundImage: NetworkImage(video.author.profileImageUrl),
+                ),
+              ),
+              const SizedBox(width: 8.0),
               GestureDetector(
                 onTap: () {},
                 child: const Icon(Icons.more_vert, size: 20.0),

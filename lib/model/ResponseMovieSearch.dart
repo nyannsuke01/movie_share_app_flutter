@@ -1,6 +1,6 @@
 
 
-import '../service/apiService.dart';
+import '../repository/apiService.dart';
 
 class ResponseMovieSearch {
   int? page;

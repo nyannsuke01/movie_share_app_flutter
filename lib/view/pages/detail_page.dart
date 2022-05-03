@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
-import '../../service/apiService.dart';
+import '../../navigation.dart';
+import '../../repository/apiService.dart';
 import '../widget/detail_item.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -11,6 +13,8 @@ import 'package:share_plus/share_plus.dart';
 class MovieDetail extends StatelessWidget {
   final int id;
   const MovieDetail(this.id, {Key? key}) : super(key: key);
+
+  get voteAverage => null;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +79,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               TextField(
                 controller: myController,
                 decoration: InputDecoration(
-                  hintText: 'コメントを入れてシェアしよう！',
+                  hintText: 'この映画、見にいこう！',
                 ),
                 onTap: () {
                   // TODO: ここにフォーカスするためのコードを書く
@@ -89,10 +93,26 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   onPrimary: Colors.black,
                   shape: const StadiumBorder(),
                 ),
-                onPressed: () {
-                  _share();
-                },
+                  onPressed: () async {
+                    _share();
+                    // await Share.share(_movieDetail!.title as String);
+                  },
               ),
+              ElevatedButton(
+                child: const Text(' back '),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                  onPrimary: Colors.black,
+                  shape: const StadiumBorder(),
+                ),
+                onPressed: () async {
+                  await Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) {
+                      return Navigation();
+                    }),
+                  );
+                },
+              )
             ]
         ),
       ),
@@ -101,7 +121,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
   void _share() async {
     print("Share Button Tapped");
-    const _shareText = 'シェアするテキスト';
+    var _shareText = _movieDetail!.title as String;
     final _screenshot = await _screenShotController.capture(
         delay: const Duration(milliseconds: 10));
 

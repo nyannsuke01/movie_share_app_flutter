@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../util/app_theme.dart';
 import '../widget/list_item.dart';
-import 'detail_page.dart';
 import '../../main.dart';
 import '../../model/ResponseMovieSearch.dart';
-import '../../service/apiService.dart';
-import '../../Const/const.dart';
+import '../../repository/apiService.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
