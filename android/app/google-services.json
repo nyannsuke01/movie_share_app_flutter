@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "93521170605",
+    "firebase_url": "https://zootubeapp.firebaseio.com",
+    "project_id": "zootubeapp",
+    "storage_bucket": "zootubeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93521170605:android:8b757029977d6dacef3624",
+        "android_client_info": {
+          "package_name": "com.zoo_tube_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93521170605-tvf1v7ubams25bd04lsike9sfc1lumbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYjDuTwMGJGvnRxnKXjhrJpzXeofUNQ7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93521170605-tvf1v7ubams25bd04lsike9sfc1lumbf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "93521170605-ojbel2ha7548uiqhb76nji5m5fli1a5e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "shingo.k.MovieShareApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93521170605:android:491227791ac69e5eef3624",
+        "android_client_info": {
+          "package_name": "shingo.k.MovieShareApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93521170605-tvf1v7ubams25bd04lsike9sfc1lumbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYjDuTwMGJGvnRxnKXjhrJpzXeofUNQ7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93521170605-tvf1v7ubams25bd04lsike9sfc1lumbf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "93521170605-ojbel2ha7548uiqhb76nji5m5fli1a5e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "shingo.k.MovieShareApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

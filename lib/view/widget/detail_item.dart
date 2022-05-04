@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
@@ -21,9 +22,9 @@ Widget? detailItem(ResponseMovieDetail? detail) {
               padding: EdgeInsets.symmetric(
                 horizontal: 50.0,
               ),
-              child: Image.network(
-                posterPath != null ? imagePath + posterPath : "",
-                errorBuilder: (context, error, stackTrace) {
+              child: CachedNetworkImage(
+                imageUrl: posterPath != null ? imagePath + posterPath : "",
+                errorWidget: (context, error, stackTrace) {
                   return const Text("NoImage");
                 },
                 height: 400.0,

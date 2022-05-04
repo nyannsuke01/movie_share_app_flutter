@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_academy_graduation/view/pages/welcome.dart';
+import '../../navigation.dart';
 import '../../util/authentication_error.dart';
 
 // アカウント登録ページ
@@ -97,7 +98,7 @@ class _RegistrationState extends State<Registration> {
                 child: Text('登録',
                   style: TextStyle(fontWeight: FontWeight.bold),),
                 textColor: Colors.white,
-                color: Colors.blue,
+                color: Colors.redAccent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -142,6 +143,28 @@ class _RegistrationState extends State<Registration> {
                 },
               ),
             ),
+            ButtonTheme(
+              minWidth: 350.0,
+              // height: 100.0,
+              child: RaisedButton(
+                child: Text('戻る',
+                  style: TextStyle(fontWeight: FontWeight.bold),),
+                textColor: Colors.white,
+                color: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+
+                onPressed: () async {
+                  await Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) {
+                      return Navigation();
+                    }),
+                  );
+                },
+              ),
+            ),
+
           ],
         ),
       ),

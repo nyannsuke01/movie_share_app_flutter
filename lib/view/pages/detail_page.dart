@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
-import '../../service/apiService.dart';
+import '../../navigation.dart';
+import '../../repository/apiService.dart';
 import '../widget/detail_item.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -11,6 +13,8 @@ import 'package:share_plus/share_plus.dart';
 class MovieDetail extends StatelessWidget {
   final int id;
   const MovieDetail(this.id, {Key? key}) : super(key: key);
+
+  get voteAverage => null;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +72,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     height: 630,
                     width: 500,
                     child: detailItem(_movieDetail)
-                ),
+
 
                 ElevatedButton(
                   child: const Text('Share'),
@@ -81,8 +85,27 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     _share();
                   },
                 ),
-              ]
-          ),
+                  onPressed: () async {
+                    _share();
+                    // await Share.share(_movieDetail!.title as String);
+                  },
+              ),
+              ElevatedButton(
+                child: const Text(' back '),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                  onPrimary: Colors.black,
+                  shape: const StadiumBorder(),
+                ),
+                onPressed: () async {
+                  await Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) {
+                      return Navigation();
+                    }),
+                  );
+                },
+              )
+            ]
         ),
         // This trailing comma makes auto-formatting nicer for build methods.
       ),
