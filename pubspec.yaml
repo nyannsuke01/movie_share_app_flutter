@@ -24,9 +24,14 @@ dependencies:
   share_plus:
   screenshot:
   path_provider:
+  lottie:
+  favorite_button: ^0.0.4
+
 
 
   cupertino_icons: ^1.0.2
+assets:
+  - assets/
 
 dev_dependencies:
   flutter_test:

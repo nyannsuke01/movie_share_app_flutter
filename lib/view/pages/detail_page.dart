@@ -51,9 +51,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     super.initState();
     fetchDetailData(id);
   }
-  final myController = TextEditingController();
-  final myFocusNode = FocusNode();
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,22 +65,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           child: Column(
               children: <Widget>[
                 Container(
-                    height: 480,
+                    height: 630,
                     width: 500,
                     child: detailItem(_movieDetail)
                 ),
-                // TODO: Star 追加
 
-                TextField(
-                  controller: myController,
-                  decoration: InputDecoration(
-                    hintText: 'コメントを入れてシェアしよう！',
-                  ),
-                  onTap: () {
-                    // TODO: ここにフォーカスするためのコードを書く
-                    myFocusNode.requestFocus();
-                  },
-                ),
                 ElevatedButton(
                   child: const Text('Share'),
                   style: ElevatedButton.styleFrom(

@@ -1,9 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
+import 'package:favorite_button/favorite_button.dart';
+
+
 
 Widget? detailItem(ResponseMovieDetail? detail) {
   if (detail == null) return null;
+  final myController = TextEditingController();
+  final myFocusNode = FocusNode();
+
   final posterPath = detail.posterPath;
   return Card(
     child:Column(
@@ -19,7 +26,7 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                 errorBuilder: (context, error, stackTrace) {
                   return const Text("NoImage");
                 },
-                height: 300.0,
+                height: 400.0,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -32,12 +39,6 @@ Widget? detailItem(ResponseMovieDetail? detail) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () => print('Navigate to profile'),
-                child: CircleAvatar(
-                  // foregroundImage: NetworkImage(video.author.profileImageUrl),
-                ),
-              ),
               const SizedBox(width: 8.0),
               Expanded(
                 child: Column(
@@ -47,7 +48,7 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                     Flexible(
                       child: Text(
                         detail.title ?? "",                                      // '${video.author.username} • ${video.viewCount} views • ${timeago.format(video.timestamp)}',
-                        maxLines: 2,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -58,12 +59,70 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                         overflow: TextOverflow.ellipsis,
                     ),
                     ),
+
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: RaisedButton(
+                            onPressed: () => null,
+                            color: Colors.red,
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.touch_app,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    '見た',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
+                              ), //Row
+                            ), //Padding
+                          ), //RaisedButton
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        StarButton(
+                          isStarred: true,
+                          // iconDisabledColor: Colors.white,
+                          valueChanged: (_isStarred) {
+                            print('Is Starred : $_isStarred');
+                          },
+                        ),
+                        Text(detail.voteAverage.toString(),
+                            style: TextStyle(fontSize: 20.0),
+                        ),
+                        Text("/10"),
+
+                        SizedBox(
+                          width: 20,
+                        ),
+
+                        FavoriteButton(
+                          isFavorite: false,
+                          valueChanged: (_isFavorite) {
+                            print('Is Favorite : $_isFavorite');
+                          },
+                        ),
+                      ],
+                    ),
+                    TextField(
+                      controller: myController,
+                      decoration: InputDecoration(
+                        hintText: 'コメントを入れてシェアしよう！',
+                      ),
+                      onTap: () {
+                        // TODO: ここにフォーカスするためのコードを書く
+                        myFocusNode.requestFocus();
+                      },
+                    ),
                   ],
                 ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.more_vert, size: 20.0),
               ),
             ],
           ),

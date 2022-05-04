@@ -99,7 +99,6 @@ class _LoginPage extends State<Login> {
                             builder: (context) => Welcome(user_id: user.uid),
                           )
                       );
-
                     } catch (e) {
                       // ログインに失敗した場合
                       setState(() {
