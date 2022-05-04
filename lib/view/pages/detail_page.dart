@@ -38,6 +38,7 @@ class MovieDetailPage extends StatefulWidget {
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
+  final _screenShotController = ScreenshotController();
   _MovieDetailPageState(this.id);
   ResponseMovieDetail? _movieDetail = null;
   final int id;
@@ -54,44 +55,35 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     super.initState();
     fetchDetailData(id);
   }
-  final myController = TextEditingController();
-  final myFocusNode = FocusNode();
-  final _screenShotController = ScreenshotController();
-
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_movieDetail?.title ?? ""),
-        backgroundColor: Colors.redAccent,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-            children: <Widget>[
-              Container(
-                  height: 480,
-                  width: 500,
-                  child: detailItem(_movieDetail)
-              ),
-              // TODO: Star 追加
+    return Screenshot(
+      controller: _screenShotController,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(_movieDetail?.title ?? ""),
+          backgroundColor: Colors.redAccent,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+              children: <Widget>[
+                Container(
+                    height: 630,
+                    width: 500,
+                    child: detailItem(_movieDetail)
 
-              TextField(
-                controller: myController,
-                decoration: InputDecoration(
-                  hintText: 'この映画、見にいこう！',
-                ),
-                onTap: () {
-                  // TODO: ここにフォーカスするためのコードを書く
-                  myFocusNode.requestFocus();
-                },
-              ),
-              ElevatedButton(
-                child: const Text('Share'),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.redAccent,
-                  onPrimary: Colors.black,
-                  shape: const StadiumBorder(),
+
+                ElevatedButton(
+                  child: const Text('Share'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.redAccent,
+                    onPrimary: Colors.black,
+                    shape: const StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    _share();
+                  },
                 ),
                   onPressed: () async {
                     _share();
@@ -115,8 +107,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               )
             ]
         ),
+        // This trailing comma makes auto-formatting nicer for build methods.
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
   void _share() async {
