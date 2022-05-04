@@ -74,40 +74,44 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     child: detailItem(_movieDetail)
 
 
-                ElevatedButton(
-                  child: const Text('Share'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent,
-                    onPrimary: Colors.black,
-                    shape: const StadiumBorder(),
-                  ),
-                  onPressed: () {
-                    _share();
-                  },
-                ),
-                  onPressed: () async {
-                    _share();
-                    // await Share.share(_movieDetail!.title as String);
-                  },
               ),
-              ElevatedButton(
-                child: const Text(' back '),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blueAccent,
-                  onPrimary: Colors.black,
-                  shape: const StadiumBorder(),
-                ),
-                onPressed: () async {
-                  await Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) {
-                      return Navigation();
-                    }),
-                  );
-                },
-              )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      child: const Text(' back '),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent,
+                        onPrimary: Colors.black,
+                        shape: const StadiumBorder(),
+                      ),
+                      onPressed: () async {
+                        await Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) {
+                            return Navigation();
+                          }),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      child: const Text('Share'),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.redAccent,
+                        onPrimary: Colors.black,
+                        shape: const StadiumBorder(),
+                      ),
+                      onPressed: () {
+                        _share();
+                      },
+                    ),
+                  ],
+                )
             ]
+          ),
         ),
-        // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }
