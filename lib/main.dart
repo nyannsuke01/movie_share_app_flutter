@@ -15,15 +15,7 @@ void main() async {
     ),
   );
 }
-Future<void> getASync() async {
-  var result = await FirebaseFirestore.instance.collection('movie_users').get();
-  result.docs.forEach((doc) {
-    print("***debug--");
-    print("***user_id, ${doc.id}");
-    print(doc['name']);
-    print(doc['videoId']);
-  });
-}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

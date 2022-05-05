@@ -1,21 +1,27 @@
-// import 'package:flutter/material.dart';
-// import '../widget/list_item.dart';
-// import 'detail_page.dart';
-// import '../../main.dart';
-// import '../../model/ResponseMovieSearch.dart';
-// import '../../model/apiService.dart';
-// import '../../Const/const.dart';
+// import 'package:dio/dio.dart';
+// import 'package:flutter_academy_graduation/const/api_const.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
 //
-// class HomePage extends StatefulWidget {
-//   const HomePage({Key? key, required this.title}) : super(key: key);
-//   final String title;
+// import '../Const/const.dart';
+// import '../model/ResponseMovieDetail.dart';
+// import '../model/ResponseMovieSearch.dart';
 //
-//   @override
-//   State<StatefulWidget> createState() {
-//     // TODO: implement createState
-//     throw UnimplementedError();
-//   }
-//   //
-//   // @override
-//   // State<HomePage> createState() => _HomePageState();
-// }
+//
+// final dioProvider = Provider((ref) {
+//   return Dio(BaseOptions(
+//     baseUrl: baseUrl,
+//   ));
+// });
+//
+// final movieTypeProvider = StateProvider((ref) => MovieType.popular);
+//
+// final moviesProvider = FutureProvider<List<ResponseMovieDetail>>((ref) async {
+//   final movieType = ref.watch(movieTypeProvider.state).state;
+//   final dio = ref.watch(dioProvider);
+//   final response = await dio.get('movie/${movieType.value}',
+//       queryParameters: {'api_key': apiKey});
+//   return ResponseMovieSearch.fromJson(response.data).results;
+//
+// });
+//
+// final movieProvider = Provider((ref) => throw UnimplementedError());

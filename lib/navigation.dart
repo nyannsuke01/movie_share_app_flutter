@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_academy_graduation/util/login_check.dart';
-import 'package:flutter_academy_graduation/view/pages/favorite.dart';
+import 'package:flutter_academy_graduation/view/pages/favorite_page.dart';
 import 'package:flutter_academy_graduation/view/pages/home_page.dart';
 import 'package:flutter_academy_graduation/view/pages/login.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
