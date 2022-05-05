@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Const/const.dart';
@@ -72,8 +73,6 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     height: 630,
                     width: 500,
                     child: detailItem(_movieDetail)
-
-
               ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

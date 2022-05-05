@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_academy_graduation/view_model/detail_view_model.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
 import 'package:favorite_button/favorite_button.dart';
@@ -11,6 +12,7 @@ Widget? detailItem(ResponseMovieDetail? detail) {
   if (detail == null) return null;
   final myController = TextEditingController();
   final myFocusNode = FocusNode();
+  final viewModel = DetailViewModel();
 
   final posterPath = detail.posterPath;
   return Card(
@@ -103,11 +105,18 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                         SizedBox(
                           width: 20,
                         ),
-
+                        //お気に入りボタン
                         FavoriteButton(
                           isFavorite: false,
                           valueChanged: (_isFavorite) {
                             print('Is Favorite : $_isFavorite');
+                            var _movieIdString = detail.id;
+                            viewModel.saveFavoriteMovieId(_movieIdString!);
+                            print('Is Favorite後');
+                            viewModel.getName();
+                            if (!_isFavorite){
+                              viewModel.deletaFavoriteMovieId(_movieIdString);
+                            }
                           },
                         ),
                       ],

@@ -27,6 +27,8 @@ dependencies:
   lottie:
   favorite_button: ^0.0.4
   cached_network_image:
+  dio:
+  flutter_riverpod:
 
 
   cupertino_icons: ^1.0.2

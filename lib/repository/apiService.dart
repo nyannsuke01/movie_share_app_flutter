@@ -5,18 +5,28 @@ import '../const/api_const.dart';
 import '../model/ResponseMovieDetail.dart';
 import '../model/ResponseMovieSearch.dart';
 import '../Const/const.dart';
+import 'package:dio/dio.dart';
 
+
+Dio dio = Dio();
 
 Future fetchMovieList(Function(ResponseMovieSearch res) action) async {
-  await fetch(baseUrl + "discover/movie?&" + apiKey, (json) {
-    action(ResponseMovieSearch.fromJson(json));
-  });
+  try {
+    await fetch(baseUrl + "discover/movie?&" + apiKey, (json) {
+      action(ResponseMovieSearch.fromJson(json));
+    });
+  } catch (e) {
+    throw e;
+  }
 }
-//TODO: dioに置き換え
 Future fetchMovieDetail(int id, Function(ResponseMovieDetail res) action) async {
-  await fetch(baseUrl + "movie/" + id.toString() + "?&" + apiKey, (json) {
-    action(ResponseMovieDetail.fromJson(json));
-  });
+  try {
+    await fetch(baseUrl + "movie/" + id.toString() + "?&" + apiKey, (json) {
+      action(ResponseMovieDetail.fromJson(json));
+    });
+  } catch (e) {
+    throw e;
+  }
 }
 
 double checkDouble(dynamic value) {
