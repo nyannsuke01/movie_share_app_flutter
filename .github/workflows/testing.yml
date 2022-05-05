@@ -19,3 +19,5 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter test
+      env: apiKey: ${{ secrets.MOVIE_SHARE_APP_API_KEY }}
+
