@@ -18,6 +18,6 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
+      - name: Copy cognito secrets
+        run: echo -n ${{ secrets.MOVIE_SHARE_APP_API_KEY }} | base64 -d > lib/const/api_const.dart
       - run: flutter test
-      env: apiKey: ${{ secrets.MOVIE_SHARE_APP_API_KEY }}
-
