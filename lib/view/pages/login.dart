@@ -10,7 +10,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginPage extends State<Login> {
-
   String login_Email = "";  // 入力されたメールアドレス
   String login_Password = "";  // 入力されたパスワード
   String infoText = "";  // ログインに関する情報を表示
