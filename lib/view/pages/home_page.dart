@@ -73,13 +73,13 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              title: Text('Honolulu'),
+              title: Text('Settings'),
               onTap: () {
 
               },
             ),
             ListTile(
-              title: Text('Dallas'),
+              title: Text('User policy'),
               onTap: () {
 
               },

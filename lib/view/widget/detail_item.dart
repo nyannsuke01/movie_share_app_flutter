@@ -68,8 +68,11 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                         SizedBox(
                           width: 100,
                           child: RaisedButton(
-                            onPressed: () => null,
-                            color: Colors.red,
+                            onPressed: () {
+                              // TODO button 押下で色を変える
+                              color: Colors.redAccent;
+                            },
+                            color: Colors.grey,
                             child: Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Row(
