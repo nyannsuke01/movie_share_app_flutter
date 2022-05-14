@@ -24,7 +24,7 @@ class _NavState extends State<Navigation> {
   }
 
   final List _widgetOptions = [
-    HomePage(title: 'Movie App'),
+    HomePage(),
     FavoritePage(),
   ];
 

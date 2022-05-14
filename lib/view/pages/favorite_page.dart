@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 
+import '../../model/ResponseMovieSearch.dart';
+import '../../repository/apiService.dart';
+import '../widget/list_item.dart';
 import 'dark_theme.dart';
 
-class FavoritePage extends StatelessWidget {
+class FavoritePage extends StatefulWidget {
   const FavoritePage({Key? key}) : super(key: key);
+  @override
+  State<FavoritePage> createState() => _FavoritePageState();
+}
+
+class _FavoritePageState extends State<FavoritePage> {
+  List<Results> _movieList = [];
+
+  void fetchListData() {
+    fetchMovieList((res) {
+      final result = res.results;
+      if (result != null) {
+        setState(() {
+          _movieList = result;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchListData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
-        title: Text("Movie Share App"),
+        title: Text("Favorite"),
         actions: [IconButton(
           icon: Icon(Icons.settings),
           onPressed: () {
@@ -43,13 +69,13 @@ class FavoritePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Honolulu'),
+              title: Text('Settings'),
               onTap: () {
 
               },
             ),
             ListTile(
-              title: Text('Dallas'),
+              title: Text('User policy'),
               onTap: () {
 
               },
@@ -57,7 +83,18 @@ class FavoritePage extends StatelessWidget {
           ],
         ),
       ),
-
+      body: Center(
+        child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: _movieList.length,
+              itemBuilder: (listContext, idx) {
+                final _movie = _movieList[idx];
+                return listItem(context, _movie);
+              },
+            )),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
