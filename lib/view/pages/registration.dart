@@ -113,7 +113,7 @@ class _RegistrationState extends State<Registration> {
                       );
                       FirebaseFirestore.instance.collection("movie_users").add({
                         "name": newNickname,
-                        "videoId": [],
+                        "movie_id": [],
                         "datetime": Timestamp.now(),
                       });
 

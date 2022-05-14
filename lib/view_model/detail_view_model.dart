@@ -3,12 +3,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DetailViewModel {
   var _fireStore = FirebaseFirestore.instance.collection;
-  Future<void> getName() async {
+  Future<String> getName() async {
+    var _name = "";
     var result = await _fireStore('movie_users').get();
     result.docs.forEach((doc) {
       print("***debug--");
       print("***user_id, ${doc.id}");
       print(doc['name']);
+      _name = doc['name'];
+    });
+    return _name;
+  }
+
+  Future<void> getMovieId() async {
+    var result = await _fireStore('movie_users').get();
+    result.docs.forEach((doc) {
+      print("***MovieIdは");
+      print("***user_id, ${doc.id}");
+      print(doc['movie_id']);
     });
   }
   Future<void> saveFavoriteMovieId(int movieId) async {

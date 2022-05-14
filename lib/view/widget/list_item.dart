@@ -12,7 +12,8 @@ Widget listItem(BuildContext context, Results result) {
     child: ListTile(
       title: Text(result.title ?? ""),
       leading: CachedNetworkImage(
-        imageUrl: posterPath != null ? mainImagePath + posterPath : "",          placeholder: (context, url) => CircularProgressIndicator(),
+        imageUrl: posterPath != null ? mainImagePath + posterPath : "",
+        placeholder: (context, url) => CircularProgressIndicator(),
         errorWidget: (context, error, stackTrace) {
             return const Text("No\nImage");
           },

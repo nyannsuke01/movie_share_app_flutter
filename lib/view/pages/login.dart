@@ -26,6 +26,15 @@ class _LoginPage extends State<Login> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text("Movie Share App"),
+        actions: [IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+          },
+        ),],
+      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
