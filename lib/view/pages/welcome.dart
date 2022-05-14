@@ -14,6 +14,15 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text("My Page"),
+        actions: [IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+          },
+        ),],
+      ),
       body:Center(
         child:Column(
           mainAxisSize: MainAxisSize.min,
