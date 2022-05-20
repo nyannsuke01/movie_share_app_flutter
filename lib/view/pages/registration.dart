@@ -17,12 +17,12 @@ class _RegistrationState extends State<Registration> {
   String newEmail = "";  // 入力されたメールアドレス
   String newPassword = "";  // 入力されたパスワード
   String infoText = "";  // 登録に関する情報を表示
-  late bool pswd_OK;  // パスワードが有効な文字数を満たしているかどうか
+  bool pswd_OK;  // パスワードが有効な文字数を満たしているかどうか
 
   // Firebase Authenticationを利用するためのインスタンス
   final FirebaseAuth auth = FirebaseAuth.instance;
-  late UserCredential result;
-  late User user;
+  UserCredential result;
+  User user;
 
   // エラーメッセージを日本語化するためのクラス
   final auth_error = Authentication_error();
@@ -111,16 +111,17 @@ class _RegistrationState extends State<Registration> {
                         email: newEmail,
                         password: newPassword,
                       );
+                      String uid = FirebaseAuth.instance.currentUser.uid;
                       FirebaseFirestore.instance.collection("movie_users").add({
                         "name": newNickname,
+                        "uid" : uid,
                         "movie_id": [],
                         "datetime": Timestamp.now(),
                       });
-
                       // 登録成功
                       // 登録したユーザー情報
                       if (result.user != null) {
-                        user = result.user!;
+                        user = result.user;
                       }
                       Navigator.push(
                           context,

@@ -16,8 +16,8 @@ class _LoginPage extends State<Login> {
 
   // Firebase Authenticationを利用するためのインスタンス
   final FirebaseAuth auth = FirebaseAuth.instance;
-  late UserCredential result;
-  late User user;
+  UserCredential result;
+  User user;
 
   // エラーメッセージを日本語化するためのクラス
   final auth_error = Authentication_error();
@@ -99,7 +99,7 @@ class _LoginPage extends State<Login> {
                       // ログイン成功
                       // ログインユーザーのIDを取得
                       if (result.user != null) {
-                        user = result.user!;
+                        user = result.user;
                       }
                       Navigator.push(
                           context,
