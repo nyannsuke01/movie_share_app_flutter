@@ -113,12 +113,16 @@ Widget detailItem(ResponseMovieDetail detail) {
                           isFavorite: false,
                           valueChanged: (_isFavorite) {
                             print('Is Favorite : $_isFavorite');
-                            var _movieIdString = detail.id;
-                            viewModel.saveFavoriteMovieId(_movieIdString!);
+                            var _movieId = detail.id;
+                            viewModel.saveFavoriteMovieId(
+                                _movieId ?? 0,
+                            );
                             print('Is Favorite後');
                             viewModel.getName();
                             if (!_isFavorite){
-                              viewModel.deletaFavoriteMovieId(_movieIdString);
+                              viewModel.deletaFavoriteMovieId(
+                                  _movieId ?? 0,
+                              );
                             }
                           },
                         ),
