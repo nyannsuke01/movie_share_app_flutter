@@ -13,7 +13,7 @@ import 'package:share_plus/share_plus.dart';
 
 class MovieDetail extends StatelessWidget {
   final int id;
-  const MovieDetail(this.id, {Key? key}) : super(key: key);
+  const MovieDetail(this.id, {Key key}) : super(key: key);
 
   get voteAverage => null;
 
@@ -30,7 +30,7 @@ class MovieDetail extends StatelessWidget {
 }
 
 class MovieDetailPage extends StatefulWidget {
-  const MovieDetailPage(this.id, {Key? key, required this.title}) : super(key: key);
+  const MovieDetailPage(this.id, {Key key, this.title}) : super(key: key);
   final int id;
   final String title;
 
@@ -41,7 +41,7 @@ class MovieDetailPage extends StatefulWidget {
 class _MovieDetailPageState extends State<MovieDetailPage> {
   final _screenShotController = ScreenshotController();
   _MovieDetailPageState(this.id);
-  ResponseMovieDetail? _movieDetail = null;
+  ResponseMovieDetail _movieDetail = null;
   final int id;
   void fetchDetailData(int id) {
     fetchMovieDetail(id, (res) {
@@ -116,7 +116,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
   void _share() async {
     print("Share Button Tapped");
-    var _shareText = _movieDetail!.title as String;
+    var _shareText = _movieDetail.title as String;
     final _screenshot = await _screenShotController.capture(
         delay: const Duration(milliseconds: 10));
 

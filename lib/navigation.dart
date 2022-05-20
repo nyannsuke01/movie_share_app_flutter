@@ -62,7 +62,7 @@ class _NavState extends State<Navigation> {
       print("_widgetOptions Login currentUser == null");
       print(_widgetOptions);
     } else {
-      _widgetOptions.add(Welcome(user_id: _auth.currentUser!.uid));
+      _widgetOptions.add(Welcome(user_id: _auth.currentUser.uid));
       print("_widgetOptions Welcome currentUser != null");
       print(_widgetOptions);
     }

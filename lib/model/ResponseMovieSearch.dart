@@ -3,10 +3,10 @@
 import '../repository/apiService.dart';
 
 class ResponseMovieSearch {
-  int? page;
-  List<Results>? results;
-  int? totalPages;
-  int? totalResults;
+  int page;
+  List<Results> results;
+  int totalPages;
+  int totalResults;
 
   ResponseMovieSearch(
       {page, results, totalPages, totalResults});
@@ -17,7 +17,7 @@ class ResponseMovieSearch {
       if (json['results'] != null) {
         results = <Results>[];
         json['results'].forEach((v) {
-          results!.add(new Results.fromJson(v));
+          results.add(new Results.fromJson(v));
         });
       }
       totalPages = json['total_pages'];
@@ -29,20 +29,20 @@ class ResponseMovieSearch {
 }
 
 class Results {
-  bool? adult;
-  String? backdropPath;
-  List<int>? genreIds;
-  int? id;
-  String? originalLanguage;
-  String? originalTitle;
-  String? overview;
-  num? popularity;
-  String? posterPath;
-  String? releaseDate;
-  String? title;
-  bool? video;
-  double? voteAverage;
-  int? voteCount;
+  bool adult;
+  String backdropPath;
+  List<int> genreIds;
+  int id;
+  String originalLanguage;
+  String originalTitle;
+  String overview;
+  num popularity;
+  String posterPath;
+  String releaseDate;
+  String title;
+  bool video;
+  double voteAverage;
+  int voteCount;
 
   Results(
       {adult,

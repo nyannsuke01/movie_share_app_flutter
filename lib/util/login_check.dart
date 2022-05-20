@@ -8,7 +8,7 @@ import 'package:flutter_academy_graduation/view/pages/welcome.dart';
 FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginCheck extends StatefulWidget{
-  LoginCheck({Key? key}) : super(key: key);
+  LoginCheck({Key key}) : super(key: key);
 
   @override
   _LoginCheckState createState() => _LoginCheckState();
@@ -18,7 +18,7 @@ class LoginCheck extends StatefulWidget{
 class _LoginCheckState extends State<LoginCheck>{
   //ログイン状態のチェック(非同期で行う)
   void checkUser() async{
-    final currentUser = await FirebaseAuth.instance.currentUser!;
+    final currentUser = await FirebaseAuth.instance.currentUser;
     if(currentUser == null){
       Navigator.of(context).push(
         MaterialPageRoute(
