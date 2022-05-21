@@ -29,7 +29,7 @@ class Welcome extends StatelessWidget {
           children: [
             Text('ようこそ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text(user_id),
+            Text("ニャン太さん"),
             ElevatedButton(
               child: const Text('ログアウト'),
               style: ElevatedButton.styleFrom(

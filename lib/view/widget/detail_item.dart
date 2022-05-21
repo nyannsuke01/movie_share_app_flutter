@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/view_model/detail_view_model.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
 import 'package:favorite_button/favorite_button.dart';
+import '../../view_model/detail_view_model.dart';
 
-Widget detailItem(ResponseMovieDetail detail) {
+Widget detailItem(ResponseMovieDetail detail, bool _isFavorite) {
   if (detail == null) return null;
   final myController = TextEditingController();
   final myFocusNode = FocusNode();
   final viewModel = DetailViewModel();
-
   final posterPath = detail.posterPath;
+  var _isRed = true;
   return Card(
     child:Column(
       children: [
@@ -65,12 +65,11 @@ Widget detailItem(ResponseMovieDetail detail) {
                       children: [
                         SizedBox(
                           width: 100,
-                          child: RaisedButton(
-                            onPressed: () {
-                              // TODO button 押下で色を変える
-                              color: Colors.redAccent;
-                            },
-                            color: Colors.grey,
+                          child: ElevatedButton(
+                            onPressed: () =>  _isRed = !_isRed,
+                            style: ElevatedButton.styleFrom(
+                              primary: _isRed ? Colors.redAccent : Colors.grey,
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Row(
@@ -108,7 +107,7 @@ Widget detailItem(ResponseMovieDetail detail) {
                         ),
                         //お気に入りボタン
                         FavoriteButton(
-                          isFavorite: false,
+                          isFavorite: _isFavorite,
                           valueChanged: (_isFavorite) {
                             print('Is Favorite : $_isFavorite');
                             var _movieId = detail.id;
@@ -132,7 +131,6 @@ Widget detailItem(ResponseMovieDetail detail) {
                         hintText: 'コメントを入れてシェアしよう！',
                       ),
                       onTap: () {
-                        // TODO: ここにフォーカスするためのコードを書く
                         myFocusNode.requestFocus();
                       },
                     ),

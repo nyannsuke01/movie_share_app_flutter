@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/view/pages/favorite_page.dart';
-import 'package:flutter_academy_graduation/view/pages/home_page.dart';
-import 'package:flutter_academy_graduation/view/pages/login.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_academy_graduation/view/pages/welcome.dart';
+import 'package:movie_share_app/view/pages/favorite_page.dart';
+import 'package:movie_share_app/view/pages/home_page.dart';
+import 'package:movie_share_app/view/pages/login.dart';
+import 'package:movie_share_app/view/pages/welcome.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 

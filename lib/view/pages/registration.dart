@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_academy_graduation/view/pages/welcome.dart';
+import 'package:movie_share_app/view/pages/welcome.dart';
 import '../../navigation.dart';
 import '../../util/authentication_error.dart';
 

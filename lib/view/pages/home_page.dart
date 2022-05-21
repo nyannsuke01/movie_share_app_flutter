@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/view/pages/dark_theme.dart';
-import 'package:provider/provider.dart';
-import '../../util/app_theme.dart';
-import '../widget/list_item.dart';
-import '../../main.dart';
-import '../../model/ResponseMovieSearch.dart';
 import '../../repository/apiService.dart';
+import '../widget/list_item.dart';
+import '../../model/ResponseMovieSearch.dart';
+import 'dark_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
