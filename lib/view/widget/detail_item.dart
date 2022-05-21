@@ -8,7 +8,7 @@ import 'package:favorite_button/favorite_button.dart';
 
 
 
-Widget? detailItem(ResponseMovieDetail? detail) {
+Widget detailItem(ResponseMovieDetail detail) {
   if (detail == null) return null;
   final myController = TextEditingController();
   final myFocusNode = FocusNode();
@@ -68,8 +68,11 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                         SizedBox(
                           width: 100,
                           child: RaisedButton(
-                            onPressed: () => null,
-                            color: Colors.red,
+                            onPressed: () {
+                              // TODO button 押下で色を変える
+                              color: Colors.redAccent;
+                            },
+                            color: Colors.grey,
                             child: Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Row(
@@ -110,12 +113,16 @@ Widget? detailItem(ResponseMovieDetail? detail) {
                           isFavorite: false,
                           valueChanged: (_isFavorite) {
                             print('Is Favorite : $_isFavorite');
-                            var _movieIdString = detail.id;
-                            viewModel.saveFavoriteMovieId(_movieIdString!);
+                            var _movieId = detail.id;
+                            viewModel.saveFavoriteMovieId(
+                                _movieId ?? 0,
+                            );
                             print('Is Favorite後');
                             viewModel.getName();
                             if (!_isFavorite){
-                              viewModel.deletaFavoriteMovieId(_movieIdString);
+                              viewModel.deletaFavoriteMovieId(
+                                  _movieId ?? 0,
+                              );
                             }
                           },
                         ),

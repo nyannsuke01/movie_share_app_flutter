@@ -7,13 +7,22 @@ import '../../navigation.dart';
 class Welcome extends StatelessWidget {
 
   final String user_id;
-  Welcome({Key? key, required this.user_id}) : super(key: key);
+  Welcome({Key key, this.user_id}) : super(key: key);
   BuildContext get context => context;
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text("My Page"),
+        actions: [IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+          },
+        ),],
+      ),
       body:Center(
         child:Column(
           mainAxisSize: MainAxisSize.min,

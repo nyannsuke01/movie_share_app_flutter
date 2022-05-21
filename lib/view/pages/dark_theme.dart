@@ -4,7 +4,7 @@ import '../../navigation.dart';
 import '../../util/app_theme.dart';
 
 class CangeThemePage extends StatelessWidget {
-  const CangeThemePage({Key? key}) : super(key: key);
+  const CangeThemePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

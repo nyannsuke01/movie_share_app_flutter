@@ -16,8 +16,8 @@ class _LoginPage extends State<Login> {
 
   // Firebase Authenticationを利用するためのインスタンス
   final FirebaseAuth auth = FirebaseAuth.instance;
-  late UserCredential result;
-  late User user;
+  UserCredential result;
+  User user;
 
   // エラーメッセージを日本語化するためのクラス
   final auth_error = Authentication_error();
@@ -26,6 +26,15 @@ class _LoginPage extends State<Login> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text("Movie Share App"),
+        actions: [IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+          },
+        ),],
+      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -90,7 +99,7 @@ class _LoginPage extends State<Login> {
                       // ログイン成功
                       // ログインユーザーのIDを取得
                       if (result.user != null) {
-                        user = result.user!;
+                        user = result.user;
                       }
                       Navigator.push(
                           context,

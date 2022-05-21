@@ -8,8 +8,7 @@ import '../../model/ResponseMovieSearch.dart';
 import '../../repository/apiService.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const HomePage({Key key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
-        title: Text(widget.title),
+        title: Text("Movie Share App"),
         actions: [IconButton(
           icon: Icon(Icons.settings),
           onPressed: () {
@@ -73,13 +72,13 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              title: Text('Honolulu'),
+              title: Text('Settings'),
               onTap: () {
 
               },
             ),
             ListTile(
-              title: Text('Dallas'),
+              title: Text('User policy'),
               onTap: () {
 
               },
