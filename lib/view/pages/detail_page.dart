@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../model/ResponseMovieDetail.dart';
 import '../../navigation.dart';
 import '../../repository/apiService.dart';
@@ -9,6 +11,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
+import 'favorite_page.dart';
 
 class MovieDetail extends StatelessWidget {
   final int id;
@@ -42,6 +45,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   _MovieDetailPageState(this.id);
   ResponseMovieDetail _movieDetail = null;
   final int id;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  var _isFavorite = false;
   void fetchDetailData(int id) {
     fetchMovieDetail(id, (res) {
       setState(() {
@@ -54,6 +59,22 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     fetchDetailData(id);
+
+    if (_auth.currentUser != null) {
+      // viewModel.getResultString();
+      print("getMovieIds");
+      viewModel.getMovieIds();
+      Future(() async {
+        final prefs = await SharedPreferences.getInstance();
+        List<String> savedStrList = prefs.getStringList('movieId');
+        List<int> intProductList = savedStrList.map((i) => int.parse(i)).toList();
+        // 保存したMovieIdに現在のidが含まれていたら、お気に入り
+        if(intProductList.contains(id)){
+          _isFavorite = true;
+        }
+      });
+    }
+    setState(() {});
   }
 
   @override
@@ -71,7 +92,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                 Container(
                     height: 630,
                     width: 500,
-                    child: detailItem(_movieDetail)
+                    child: detailItem(_movieDetail, _isFavorite)
               ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
