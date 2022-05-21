@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/view/pages/login.dart';
-import 'package:flutter_academy_graduation/view/pages/welcome.dart';
+import '../view/pages/login.dart';
+import '../view/pages/welcome.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 

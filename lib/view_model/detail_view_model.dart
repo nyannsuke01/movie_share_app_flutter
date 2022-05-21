@@ -1,7 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailViewModel {
   var _fireStore = FirebaseFirestore.instance.collection;
@@ -10,9 +9,6 @@ class DetailViewModel {
     var _name = "";
     var result = await _fireStore('movie_users').get();
     result.docs.forEach((doc) {
-      print("***debug--");
-      print("***user_id, ${doc.id}");
-      print(doc['name']);
       _name = doc['name'];
     });
     return _name;
@@ -30,7 +26,6 @@ class DetailViewModel {
       _fireStore('movie_users').doc("${doc.id}").update({
         "movie_id": FieldValue.arrayUnion([movieId])
       }) .then((value) => print('ドキュメントを更新しました！')).catchError((e) => print(e));
-      print("***debug--");
       print("***user_id, ${doc.id}");
       print(doc['name']);
     });
@@ -42,9 +37,6 @@ class DetailViewModel {
       _fireStore('movie_users').doc("${doc.id}").update({
         "movie_id": FieldValue.arrayRemove([movieId])
       }) .then((value) => print('ドキュメントを削除しました！')).catchError((e) => print(e));
-      print("***debug--");
-      print("***user_id, ${doc.id}");
-      print(doc['name']);
     });
   }
 

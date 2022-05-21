@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/view_model/detail_view_model.dart';
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
 import 'package:favorite_button/favorite_button.dart';
+import '../../view_model/detail_view_model.dart';
 
 Widget detailItem(ResponseMovieDetail detail) {
   if (detail == null) return null;
@@ -132,7 +132,6 @@ Widget detailItem(ResponseMovieDetail detail) {
                         hintText: 'コメントを入れてシェアしよう！',
                       ),
                       onTap: () {
-                        // TODO: ここにフォーカスするためのコードを書く
                         myFocusNode.requestFocus();
                       },
                     ),

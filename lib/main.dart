@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/util/app_theme.dart';
+import 'package:movie_share_app/util/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'navigation.dart';
 
