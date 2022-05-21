@@ -1,5 +1,5 @@
-name: flutter_academy_graduation
-description: FlutterAcademyGraduationArtWork
+name: movie_share_app
+description: TMDB flutter app
 
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
