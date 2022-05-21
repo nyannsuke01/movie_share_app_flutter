@@ -25,6 +25,9 @@ Widget favoritelistItem(BuildContext context, ResponseMovieDetail detail) {
       onTap: () {
         final id = detail.id;
         if (id != null) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MovieDetail(id)));
         }
       },
     ),
