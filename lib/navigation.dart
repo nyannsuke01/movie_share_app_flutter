@@ -54,6 +54,7 @@ class _NavState extends State<Navigation> {
   }
 
   void _checkUser(){
+    //login check currentUser ありWelcome なしLogin画面
     if (_widgetOptions.length == 3) {
       _widgetOptions[2] == null;
     }
