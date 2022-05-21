@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_academy_graduation/util/login_check.dart';
 import 'package:flutter_academy_graduation/view/pages/favorite_page.dart';
 import 'package:flutter_academy_graduation/view/pages/home_page.dart';
 import 'package:flutter_academy_graduation/view/pages/login.dart';
@@ -54,6 +53,7 @@ class _NavState extends State<Navigation> {
   }
 
   void _checkUser(){
+    //login check currentUser ありWelcome なしLogin画面
     if (_widgetOptions.length == 3) {
       _widgetOptions[2] == null;
     }

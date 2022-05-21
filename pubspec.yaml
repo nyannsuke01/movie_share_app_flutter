@@ -30,6 +30,7 @@ dependencies:
   dio:
   flutter_riverpod:
   shared_preferences:
+  pedantic_mono:
 
 
   cupertino_icons: ^1.0.2
