@@ -1,34 +1,58 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../model/ResponseMovieSearch.dart';
+import '../../model/ResponseMovieDetail.dart';
 import '../../repository/apiService.dart';
-import '../widget/list_item.dart';
+import '../../view_model/detail_view_model.dart';
+import '../widget/favorite_list_item.dart';
 import 'dark_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+FirebaseAuth _auth = FirebaseAuth.instance;
+final viewModel = DetailViewModel();
 
 class FavoritePage extends StatefulWidget {
-  const FavoritePage({Key? key}) : super(key: key);
+  const FavoritePage({Key key}) : super(key: key);
+
   @override
   State<FavoritePage> createState() => _FavoritePageState();
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  List<Results> _movieList = [];
+  //Result型だから違う　
+  // ResponseMovieDetail _movieDetail = null;
+  List<ResponseMovieDetail> _movieList = [];
 
-  void fetchListData() {
-    fetchMovieList((res) {
-      final result = res.results;
-      if (result != null) {
-        setState(() {
-          _movieList = result;
-        });
-      }
+
+  void fetchDetailData(int id) {
+    fetchMovieDetail(id, (res) {
+      setState(() {
+        // _movieDetail = res;
+        _movieList.add(res);
+        print("*_movieList* ${_movieList[1].title}");
+      });
     });
   }
 
   @override
   void initState() {
     super.initState();
-    fetchListData();
+    if (_auth.currentUser != null) {
+      // viewModel.getResultString();
+      print("getMovieIds");
+      viewModel.getMovieIds();
+      Future(() async {
+        final prefs = await SharedPreferences.getInstance();
+        List<String> savedStrList = prefs.getStringList('movieId');
+        print("*savedStrList* ${savedStrList}");
+        List<int> intProductList = savedStrList.map((i) => int.parse(i)).toList();
+        print("*intProductList** ${intProductList}");
+        // そのmovie_idでAPIを叩き、List で表示する
+        for (var movieId in intProductList) {
+          //取得したmovieIdを元にYoutube検索情報を取得
+          fetchDetailData(movieId);
+        }
+      });
+    }
   }
 
   @override
@@ -88,12 +112,15 @@ class _FavoritePageState extends State<FavoritePage> {
             height: double.infinity,
             width: double.infinity,
             child: ListView.builder(
+              shrinkWrap: true,
               itemCount: _movieList.length,
               itemBuilder: (listContext, idx) {
                 final _movie = _movieList[idx];
-                return listItem(context, _movie);
+                print("*_movie* ${_movie}");
+                return favoritelistItem(context, _movie);
               },
-            )),
+            )
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
