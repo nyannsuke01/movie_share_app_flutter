@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
-import '../../model/ResponseMovieSearch.dart';
-import '../../view_model/detail_view_model.dart';
 import '../pages/detail_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
