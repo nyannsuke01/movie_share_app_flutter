@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_academy_graduation/view_model/favorite_view_model.dart';
 import '../../model/ResponseMovieDetail.dart';
 import '../../repository/apiService.dart';
-import '../../view_model/detail_view_model.dart';
 import '../widget/favorite_list_item.dart';
 import 'dark_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
-final viewModel = DetailViewModel();
+final viewModel = FavoriteViewModel();
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({Key key}) : super(key: key);
