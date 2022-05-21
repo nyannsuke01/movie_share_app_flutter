@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../navigation.dart';
 
 // [Themelist] インスタンスにおける処理。
@@ -66,6 +66,10 @@ class Welcome extends StatelessWidget {
     // 内部で保持しているログイン情報等が初期化される
     // （現時点ではログアウト時はこの処理を呼び出せばOKと、思うぐらいで大丈夫です）
     await FirebaseAuth.instance.signOut();
+    //内部保持しているデータの削除
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("movieId");
+
     // ログイン画面に遷移＋チャット画面を破棄
     await Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) {

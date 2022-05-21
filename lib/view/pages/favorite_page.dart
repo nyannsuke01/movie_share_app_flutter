@@ -18,17 +18,12 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  //Result型だから違う　
-  // ResponseMovieDetail _movieDetail = null;
   List<ResponseMovieDetail> _movieList = [];
-
 
   void fetchDetailData(int id) {
     fetchMovieDetail(id, (res) {
       setState(() {
-        // _movieDetail = res;
         _movieList.add(res);
-        print("*_movieList* ${_movieList[1].title}");
       });
     });
   }
@@ -43,12 +38,10 @@ class _FavoritePageState extends State<FavoritePage> {
       Future(() async {
         final prefs = await SharedPreferences.getInstance();
         List<String> savedStrList = prefs.getStringList('movieId');
-        print("*savedStrList* ${savedStrList}");
         List<int> intProductList = savedStrList.map((i) => int.parse(i)).toList();
-        print("*intProductList** ${intProductList}");
         // そのmovie_idでAPIを叩き、List で表示する
         for (var movieId in intProductList) {
-          //取得したmovieIdを元にYoutube検索情報を取得
+          //取得したmovieIdを元にmovieId情報を取得
           fetchDetailData(movieId);
         }
       });
@@ -116,7 +109,6 @@ class _FavoritePageState extends State<FavoritePage> {
               itemCount: _movieList.length,
               itemBuilder: (listContext, idx) {
                 final _movie = _movieList[idx];
-                print("*_movie* ${_movie}");
                 return favoritelistItem(context, _movie);
               },
             )

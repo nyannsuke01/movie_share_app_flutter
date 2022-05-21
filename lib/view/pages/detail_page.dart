@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
 import '../../navigation.dart';
 import '../../repository/apiService.dart';

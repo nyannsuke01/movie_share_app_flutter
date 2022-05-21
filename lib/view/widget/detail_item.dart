@@ -6,8 +6,6 @@ import '../../Const/const.dart';
 import '../../model/ResponseMovieDetail.dart';
 import 'package:favorite_button/favorite_button.dart';
 
-
-
 Widget detailItem(ResponseMovieDetail detail) {
   if (detail == null) return null;
   final myController = TextEditingController();
