@@ -1,4 +1,5 @@
 **Movie Share App**
+サイバーエージェント社主催　FLUTTERアカデミーでのコンペ作品
 
 コメントを入れてSNSシェア、気軽に見にいこうと誘えるアプリ
 <img width="1096" alt="スクリーンショット 2022-05-27 1 51 01" src="https://user-images.githubusercontent.com/51296886/170536099-a6c23fdf-a0d3-4771-ac4f-aef529db49b8.png">
